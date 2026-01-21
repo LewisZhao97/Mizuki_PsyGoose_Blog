@@ -20,6 +20,7 @@ enum I18nKey {
 	// 公告栏
 	announcement = "announcement",
 	announcementClose = "announcementClose",
+	learnMore = "learnMore",
 
 	comments = "comments",
 
