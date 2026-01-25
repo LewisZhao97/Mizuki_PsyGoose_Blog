@@ -3,12 +3,14 @@ title: Markdown语法的文章编写指南
 published: 2026-01-20
 pinned: false
 description: Markdown博客文章的简单示例。
-image: "./新一1.jpg"
-tags: [Markdown, Blogging]
+image: https://fdcf6812.cloudflare-imgbed-2dl.pages.dev/file/1769355547434_Shinichi1.jpg
+tags:
+  - Markdown
+  - Blogging
 category: Examples
-licenseName: "Unlicensed"
+licenseName: Unlicensed
 author: emn178
-sourceLink: "https://github.com/emn178/markdown"
+sourceLink: https://github.com/emn178/markdown
 draft: false
 ---
 # 原文链接
