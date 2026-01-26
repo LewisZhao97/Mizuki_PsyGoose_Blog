@@ -2,7 +2,7 @@
 title: Markdown语法的文章编写指南
 published: 2026-01-20
 pinned: false
-description: Markdown博客文章的简单示例。
+description: 本文介绍了Markdown语法的基本使用方法，以及如何使用Markdown语法进行博客文章的编写。
 image: https://fdcf6812.cloudflare-imgbed-2dl.pages.dev/file/1769355547434_Shinichi1.jpg
 tags:
   - Markdown

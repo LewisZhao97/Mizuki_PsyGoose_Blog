@@ -28,6 +28,7 @@ import PostMetadata from "../../components/PostMeta.astro";
 import { profileConfig, siteConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
 import Encryptor from "../../components/Encryptor.astro";
+import AISummary from "@components/misc/AISummary.astro";
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
@@ -248,6 +249,9 @@ const jsonLd = {
                     {entry.data.title}
                 </div>
             </div>
+
+			<!-- AI Summary -->
+			{entry.data.description && <AISummary content={entry.data.description} class="onload-animation" />}
 
             <!-- metadata -->
             <div class="onload-animation">

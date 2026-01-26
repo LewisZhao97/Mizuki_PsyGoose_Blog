@@ -2,7 +2,7 @@
 title: 图形渲染常用基础光照模型
 published: 2026-01-22
 pinned: false
-description: 在Unity中实现的常用光照模型。
+description: 本文深入解析了图形渲染中的基础光照模型，涵盖 Lambert、Half-Lambert、Phong 及 Blinn-Phong 的核心原理与区别。
 image: https://s2.loli.net/2024/08/20/5fszgXeOxmL3Wdv.webp
 tags:
   - Shading
