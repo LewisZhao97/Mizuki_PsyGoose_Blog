@@ -1,6 +1,7 @@
 ﻿---
 export interface Props {
 	content: string;
+	class: string;
 }
 const { content } = Astro.props;
 
@@ -71,6 +72,7 @@ if (!content || content.trim() === '') {
 			const typeSpeed = 30; // 打字速度（毫秒）
 
 			function typeWriter() {
+				if (!textElement || !content) return;
 				if (index < content.length) {
 					textElement.textContent += content.charAt(index);
 					index++;

@@ -23,6 +23,7 @@ export const en: Translation = {
 	// Announcement
 	[Key.announcement]: "Announcement",
 	[Key.announcementClose]: "Close",
+	[Key.learnMore]: "Learn More",
 
 	[Key.comments]: "Comments",
 	[Key.friends]: "Friends",

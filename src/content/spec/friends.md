@@ -2,7 +2,7 @@
 **申请友链前请先在自己网站添加本站友链，请使用以下信息：**
 ```yaml
 title: "PsyGoose Blog",
-imgurl: "https://avatars.githubusercontent.com/u/14985020?v=4&s=640",
+imgurl: "https://fdcf6812.cloudflare-imgbed-2dl.pages.dev/file/1769354895167_avatar.jpg",
 desc: "Technical for Artist",
 siteurl: "",
 tags: [ "TA", "Game Engine", "Rendering" ],

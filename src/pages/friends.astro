@@ -221,7 +221,7 @@ const allTags = Array.from(new Set(friendsList.flatMap((item) => item.tags)));
 	</div>
 	<!--添加友链页面评论功能-->
 	<div class="mt-4">
-		<Comment post={friendsPost} />
+		<Comment post={friendsPost as any} />
 	</div>
 	<!-- 引用全局脚本 -->
 	<script is:inline src="/js/friends-page-handler.js"></script>

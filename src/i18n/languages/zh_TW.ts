@@ -23,6 +23,7 @@ export const zh_TW: Translation = {
 	// 公告欄
 	[Key.announcement]: "公告",
 	[Key.announcementClose]: "關閉",
+	[Key.learnMore]: "了解更多",
 
 	[Key.comments]: "評論",
 	[Key.friends]: "友鏈",

@@ -23,6 +23,7 @@ export const ja: Translation = {
 	// お知らせ
 	[Key.announcement]: "お知らせ",
 	[Key.announcementClose]: "閉じる",
+	[Key.learnMore]: "詳しく見る",
 
 	[Key.comments]: "コメント",
 	[Key.friends]: "友達",

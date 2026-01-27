@@ -4,7 +4,7 @@ export type AnimeItem = {
 	status: "watching" | "completed" | "planned";
 	rating: number;
 	cover: string;
-	// description: string;
+	description: string;
 	episodes: string;
 	year: string;
 	season: string;
@@ -23,6 +23,7 @@ const localAnimeList: AnimeItem[] = [
 		status: "completed",
 		rating: 8.6,
 		cover: "https://lain.bgm.tv/pic/cover/l/13/c5/400602_ZI8Y9.jpg",
+		description: "",
 		episodes: "28 episodes",
 		year: "2023",
 		season: "1",
@@ -39,6 +40,7 @@ const localAnimeList: AnimeItem[] = [
 		status: "completed",
 		rating: 7.2,
 		cover: "https://lain.bgm.tv/pic/cover/l/de/4a/329906_hmtVD.jpg",
+		description: "",
 		episodes: "25 episodes",
 		year: "2022",
 		season: "1",
@@ -55,6 +57,7 @@ const localAnimeList: AnimeItem[] = [
 		status: "completed",
 		rating: 7.2,
 		cover: "https://lain.bgm.tv/pic/cover/l/69/5b/411427_1Bw95.jpg",
+		description: "",
 		episodes: "37 episodes",
 		year: "2023",
 		season: "2",
@@ -71,6 +74,7 @@ const localAnimeList: AnimeItem[] = [
 		status: "watching",
 		rating: 7.3,
 		cover: "https://lain.bgm.tv/pic/cover/l/3d/79/498378_3ycrL.jpg",
+		description: "",
 		episodes: "14 episodes",
 		year: "2025",
 		season: "3",
@@ -87,6 +91,7 @@ const localAnimeList: AnimeItem[] = [
 		status: "watching",
 		rating: 8.1,
 		cover: "https://lain.bgm.tv/pic/cover/l/0b/24/515759_qA1Zc.jpg",
+		description: "",
 		episodes: "10 episodes",
 		year: "2026",
 		season: "2",
@@ -103,6 +108,7 @@ const localAnimeList: AnimeItem[] = [
 		status: "completed",
 		rating: 8.3,
 		cover: "https://lain.bgm.tv/pic/cover/l/39/83/309311_dJU58.jpg",
+		description: "",
 		episodes: "10 episodes",
 		year: "2022",
 		season: "1",
@@ -119,6 +125,7 @@ const localAnimeList: AnimeItem[] = [
 		status: "planned",
 		rating: 8.0,
 		cover: "https://lain.bgm.tv/pic/cover/l/f6/0f/604826_2XWRN.jpg",
+		description: "",
 		episodes: "1 episodes",
 		year: "2026",
 		season: "1",
@@ -135,6 +142,7 @@ const localAnimeList: AnimeItem[] = [
 		status: "planned",
 		rating: 8.4,
 		cover: "https://lain.bgm.tv/pic/cover/l/e0/d8/470660_2JZaq.jpg",
+		description: "",
 		episodes: "1 episodes",
 		year: "2025",
 		season: "1",
@@ -151,6 +159,7 @@ const localAnimeList: AnimeItem[] = [
 		status: "planned",
 		rating: 8.2,
 		cover: "https://lain.bgm.tv/pic/cover/l/6e/1a/509986_99qsc.jpg",
+		description: "",
 		episodes: "12 episodes",
 		year: "2025",
 		season: "1",
@@ -167,6 +176,7 @@ const localAnimeList: AnimeItem[] = [
 		status: "completed",
 		rating: 7.3,
 		cover: "https://lain.bgm.tv/pic/cover/l/4a/2b/529431_a7joa.jpg",
+		description: "",
 		episodes: "12 episodes",
 		year: "2025",
 		season: "2",
@@ -183,6 +193,7 @@ const localAnimeList: AnimeItem[] = [
 		status: "completed",
 		rating: 7.1,
 		cover: "https://lain.bgm.tv/pic/cover/l/44/7d/467461_HHw4K.jpg",
+		description: "",
 		episodes: "12 episodes",
 		year: "2024",
 		season: "1",
@@ -199,6 +210,7 @@ const localAnimeList: AnimeItem[] = [
 		status: "watching",
 		rating: 7.8,
 		cover: "https://lain.bgm.tv/pic/cover/l/c5/88/395378_jztpO.jpg",
+		description: "",
 		episodes: "24 episodes",
 		year: "2024",
 		season: "1",
@@ -215,6 +227,7 @@ const localAnimeList: AnimeItem[] = [
 		status: "completed",
 		rating: 7.5,
 		cover: "https://lain.bgm.tv/pic/cover/l/d9/f5/326895_j1S2n.jpg",
+		description: "",
 		episodes: "25 episodes",
 		year: "2022",
 		season: "1",
