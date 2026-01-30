@@ -23,7 +23,7 @@ let meting_id = musicPlayerConfig.id ?? "14164869977";
 let meting_server = musicPlayerConfig.server ?? "netease";
 // Meting API 的类型，从配置中获取或使用默认值
 let meting_type = musicPlayerConfig.type ?? "playlist";
-// 播放状态，默认为 false (未播放)
+// 播放状态，默认为 true (未播放)
 let isPlaying = false;
 // 播放器是否展开，默认为 false
 let isExpanded = false;
@@ -35,8 +35,8 @@ let showPlaylist = false;
 let currentTime = 0;
 // 歌曲总时长，默认为 0
 let duration = 0;
-// 音量，默认为 0.7
-let volume = 0.7;
+// 音量，默认为 0.2
+let volume = 0.2;
 // 是否静音，默认为 false
 let isMuted = false;
 // 是否正在加载，默认为 false
@@ -44,7 +44,7 @@ let isLoading = false;
 // 是否随机播放，默认为 false
 let isShuffled = false;
 // 循环模式，0: 不循环, 1: 单曲循环, 2: 列表循环，默认为 0
-let isRepeating = 0;
+let isRepeating = 2;
 // 错误信息，默认为空字符串
 let errorMessage = "";
 // 是否显示错误信息，默认为 false
