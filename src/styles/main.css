@@ -9,18 +9,18 @@
 @import "./gradient-buttons.css";
 /* 加密内容样式已移除，现在直接使用非加密文章的样式 */
 
-/* 导入 ZenMaruGothic-Medium 字体 */
+/* 导入 JetBrainsMono-Regular 字体 */
 @font-face {
-  font-family: "ZenMaruGothic-Medium";
-  src: url("/assets/font/ZenMaruGothic-Medium.woff2") format("woff2");
+  font-family: "JetBrainsMono-Regular";
+  src: url("/assets/font/JetBrainsMono-Regular.ttf") format("truetype");
   font-weight: 500;
   font-display: swap;
 }
 
-/* 导入 萝莉体 第二版 字体 */
+/* 导入 LXGWWenKai-Regular字体 */
 @font-face {
-  font-family: "萝莉体 第二版";
-  src: url("/assets/font/萝莉体 第二版.woff2") format("woff2");
+  font-family: "LXGWWenKai-Regular";
+  src: url("/assets/font/LXGWWenKai-Regular.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -821,4 +821,39 @@ html {
   50% {
     opacity: 0;
   }
+}
+
+/* =================== */
+/* 🔤 字体强制覆盖设置 */
+/* =================== */
+
+/* 定义一个 CSS 变量，方便管理代码字体栈 */
+:root {
+  /* 优先使用 JetBrains，中文回退到霞鹜文楷，最后兜底系统等宽字体 */
+  --code-font-stack: "JetBrainsMono-Regular", "LXGWWenKai-Regular", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* 1. 强制覆盖 Astro/Shiki 生成的代码块 (.astro-code)
+   这是最重要的部分，控制着代码高亮区域 */
+.astro-code,
+.astro-code code,
+.astro-code span {
+  font-family: var(--code-font-stack) !important;
+}
+
+/* 2. 强制覆盖 Markdown 正文内 (Typography 插件) 的行内代码 */
+.prose code,
+.prose pre {
+  font-family: var(--code-font-stack) !important;
+}
+
+/* 3. 兜底通用设置，覆盖所有普通 code 标签 */
+code, kbd, samp, pre {
+  font-family: var(--code-font-stack) !important;
+}
+
+/* 4. 微调：修正行内代码可能的垂直对齐问题 */
+:not(pre) > code {
+  padding: 0.1em 0.3em;
+  border-radius: 0.25rem;
 }

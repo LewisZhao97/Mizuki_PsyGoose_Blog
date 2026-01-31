@@ -6,7 +6,7 @@ export interface Project {
 	title: string;
 	description: string;
 	image: string;
-	category: "web" | "mobile" | "desktop" | "other";
+	category: "web" | "mobile" | "desktop" | "other" | "graphics";
 	techStack: string[];
 	status: "completed" | "in-progress" | "planned";
 	liveDemo?: string;
@@ -20,77 +20,43 @@ export interface Project {
 
 export const projectsData: Project[] = [
 	{
-		id: "mizuki-blog",
-		title: "Mizuki Blog Theme",
+		id: "PsyGoose-blog",
+		title: "PsyGoose Blog",
 		description:
-			"Modern blog theme developed based on the Astro framework, supporting multilingual, dark mode, and responsive design features.",
+			"一个基于Astro框架，Mizuki主题的现代化静态博客，主要记录作为TA技术美术的道路上所学习的技能与分享。",
 		image: "",
 		category: "web",
 		techStack: ["Astro", "TypeScript", "Tailwind CSS", "Svelte"],
-		status: "completed",
-		liveDemo: "https://blog.example.com",
-		sourceCode: "https://github.com/example/mizuki", // 更改为GitHub链接
-		visitUrl: "https://blog.example.com", // 添加前往项目链接
-		startDate: "2024-01-01",
-		endDate: "2024-06-01",
-		featured: true,
-		tags: ["Blog", "Theme", "Open Source"],
-	},
-	{
-		id: "portfolio-website",
-		title: "Personal Portfolio",
-		description:
-			"Personal portfolio website showcasing project experience and technical skills.",
-		image: "",
-		category: "web",
-		techStack: ["React", "Next.js", "TypeScript", "Framer Motion"],
-		status: "completed",
-		liveDemo: "https://portfolio.example.com",
-		sourceCode: "https://github.com/example/portfolio",
-		visitUrl: "https://portfolio.example.com", // 添加前往项目链接
-		startDate: "2023-09-01",
-		endDate: "2023-12-01",
-		featured: true,
-		tags: ["Portfolio", "React", "Animation"],
-	},
-	{
-		id: "task-manager-app",
-		title: "Task Manager App",
-		description:
-			"Cross-platform task management application supporting team collaboration and project management.",
-		image: "",
-		category: "mobile",
-		techStack: ["React Native", "TypeScript", "Redux", "Firebase"],
 		status: "in-progress",
-		startDate: "2024-03-01",
-		tags: ["Mobile", "Productivity", "Team Collaboration"],
+		// liveDemo: "https://psygooseblog.vercel.app/",
+		sourceCode: "https://github.com/LewisZhao97/Mizuki_PsyGoose_Blog", // 更改为GitHub链接
+		visitUrl: "https://psygooseblog.vercel.app/", // 添加前往项目链接
+		startDate: "2025-12-25",
+		featured: true,
+		tags: ["Blog", "Technical Artist", "Sharing"],
 	},
 	{
-		id: "data-visualization-tool",
-		title: "Data Visualization Tool",
-		description:
-			"Data visualization tool supporting multiple chart types and interactive analysis.",
+		id: "Unity GooseRP",
+		title: "Unity Goose Render Pipeline",
+		description: "基于Unity Universal Render Pipeline的自定义卡通渲染管线",
 		image: "",
-		category: "web",
-		techStack: ["Vue.js", "D3.js", "TypeScript", "Node.js"],
-		status: "completed",
-		liveDemo: "https://dataviz.example.com",
-		visitUrl: "https://dataviz.example.com", // 添加前往项目链接
-		startDate: "2023-06-01",
-		endDate: "2023-11-01",
-		tags: ["Data Visualization", "Analytics", "Charts"],
-	},
-	{
-		id: "e-commerce-platform",
-		title: "E-commerce Platform",
-		description:
-			"Full-stack e-commerce platform including user management, product management, and order processing features.",
-		image: "",
-		category: "web",
-		techStack: ["Next.js", "Node.js", "PostgreSQL", "Stripe"],
+		category: "graphics",
+		techStack: ["Unity", "C#", "HLSL", "Shader"],
 		status: "planned",
-		startDate: "2024-07-01",
-		tags: ["E-commerce", "Full Stack", "Payment Integration"],
+		startDate: "2026-03-01",
+		tags: ["Universal RP", "Custom RP", "Toon Rendering", "Shader"],
+	},
+	{
+		id: "UE5 Toon RP",
+		title: "UE5 Custom Render Pipeline",
+		description:
+			"基于Unreal Engine 5.7源码的自定义卡通光照模型渲染管线的开发",
+		image: "",
+		category: "graphics",
+		techStack: ["Unreal Engine", "C++", "HLSL", "Shader"],
+		status: "planned",
+		startDate: "2026-05-01",
+		tags: ["Unreal Engine", "Source Code", "Toon Rendering", "Shader"],
 	},
 ];
 

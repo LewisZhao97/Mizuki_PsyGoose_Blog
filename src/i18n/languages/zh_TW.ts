@@ -134,6 +134,7 @@ export const zh_TW: Translation = {
 	[Key.projectsSource]: "原始碼",
 	[Key.projectsVisit]: "前往專案",
 	[Key.projectsGitHub]: "GitHub",
+	[Key.projectsGraphics]: "圖形",
 	// [Key.projectsGitee]: "Gitee",  // 移除 Gitee 支援
 
 	// RSS 頁面
