@@ -72,14 +72,14 @@ export default defineConfig({
 				pluginCustomCopyButton(),
 			],
 			defaultProps: {
-				wrap: true,
-				overridesByLang: {
-					shellsession: { showLineNumbers: false },
-					bash: { frame: "code" },
-					shell: { frame: "code" },
-					sh: { frame: "code" },
-					zsh: { frame: "code" },
-				},
+				wrap: false,
+				// overridesByLang: {
+				// 	shellsession: { showLineNumbers: false },
+				// 	bash: { frame: "code" },
+				// 	shell: { frame: "code" },
+				// 	sh: { frame: "code" },
+				// 	zsh: { frame: "code" },
+				// },
 			},
 			styleOverrides: {
 				codeBackground: "var(--codeblock-bg)",
