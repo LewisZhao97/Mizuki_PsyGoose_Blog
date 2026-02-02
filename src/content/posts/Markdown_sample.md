@@ -7,7 +7,7 @@ image: https://fdcf6812.cloudflare-imgbed-2dl.pages.dev/file/1769355547434_Shini
 tags:
   - Markdown
   - Blogging
-category: Examples
+category: Tutorial
 licenseName: Unlicensed
 author: emn178
 sourceLink: https://github.com/emn178/markdown

@@ -2,7 +2,7 @@
 title: 图形渲染常用基础光照模型
 published: 2026-01-22
 pinned: false
-description: 本文深入解析了图形渲染中的基础光照模型，涵盖 Lambert、Half-Lambert、Phong 及 Blinn-Phong 的核心原理与区别。
+description: 本文简述了图形渲染中的基础光照模型，涵盖 Lambert、Half-Lambert、Phong 及 Blinn-Phong 的核心原理与区别。
 image: https://s2.loli.net/2024/08/20/5fszgXeOxmL3Wdv.webp
 tags:
   - Shading
@@ -41,7 +41,9 @@ Lambert 是最理想的漫反射模型。它假设表面是完全粗糙的，光
 
 根据 **兰伯特余弦定律 (Lambert's Cosine Law)**，反射光强与表面法线和入射光向量之间夹角的余弦值成正比。
 
-$$I_{diffuse} = K_d \cdot I_{light} \cdot \max(N \cdot L, 0)$$
+$$
+I_{diffuse} = K_d \cdot I_{light} \cdot \max(N \cdot L, 0)
+$$
 
 - $K_d$: 材质的漫反射颜色
     
@@ -63,7 +65,16 @@ vec3 CalculateLambert(vec3 normal, vec3 lightDir, vec3 lightColor, vec3 albedo)
     return albedo * lightColor * NdotL;
 }
 ```
+High Level Shading Language
 
+```hlsl
+float3 CalculateLambert(float3 normal, float3 lightDir, float3 lightColor, float3 albedo)
+{
+    float NdotL = max(dot(normal, lightDir), 0.0);
+    
+    return albedo * lightColor * NdotL;
+}
+```
 ---
 
 ## 2. Half-Lambert 模型
@@ -78,13 +89,19 @@ Half-Lambert 是由 Valve 公司在开发《半条命2 (Half-Life 2)》时提出
 
 它将点积结果从 $[-1, 1]$ 的区间映射到 $[0, 1]$ 的区间，通常系数为 $0.5$。
 
-$$I_{half} = (\alpha \cdot (N \cdot L) + \beta)^\gamma$$
+$$
+I_{half} = (\alpha \cdot (N \cdot L) + \beta)^\gamma
+$$
 
 通常取 $\alpha=0.5, \beta=0.5, \gamma=1$ (或者 $\gamma=2$ 用于增加对比度)。
 
-$$Factor = 0.5 \cdot (N \cdot L) + 0.5$$
+$$
+Factor = 0.5 \cdot (N \cdot L) + 0.5
+$$
 
-$$I_{diffuse} = K_d \cdot I_{light} \cdot Factor$$
+$$
+I_{diffuse} = K_d \cdot I_{light} \cdot Factor
+$$
 
 ### 着色器实现
 
@@ -103,6 +120,19 @@ vec3 CalculateHalfLambert(vec3 normal, vec3 lightDir, vec3 lightColor, vec3 albe
     return albedo * lightColor * halfLambert;
 }
 ```
+High Level Shading Language
+
+```hlsl
+float3 CalculateHalfLambert(float3 normal, float3 lightDir, float3 lightColor, float3 albedo)
+{
+    float NdotL = dot(normal, lightDir);
+    float halfLambert = NdotL * 0.5 + 0.5;
+    
+    // halfLambert = pow(halfLambert, 2.0); 
+    
+    return albedo * lightColor * halfLambert;
+}
+```
 
 ---
 
@@ -116,11 +146,15 @@ Phong 模型在漫反射的基础上增加了**高光 (Specular)** 分量。它�
 
 需要先计算光线关于法线的反射向量 $R$。
 
-$$R = \text{reflect}(-L, N) = 2(N \cdot L)N - L$$
+$$
+R = \text{reflect}(-L, N) = 2(N \cdot L)N - L
+$$
 
 高光强度取决于 $R$ 和 $V$ 的夹角以及材质的**反光度 (Shininess)**。
 
-$$I_{specular} = K_s \cdot I_{light} \cdot \max(R \cdot V, 0)^{\alpha}$$
+$$
+I_{specular} = K_s \cdot I_{light} \cdot \max(R \cdot V, 0)^{\alpha}
+$$
 
 - $K_s$: 材质的高光颜色
     
@@ -144,6 +178,18 @@ vec3 CalculatePhong(vec3 normal, vec3 lightDir, vec3 viewDir, vec3 lightColor, f
     return lightColor * spec; // 通常还要乘上高光贴图颜色
 }
 ```
+High Level Shading Language
+
+```hlsl
+float3 CalculatePhong(float3 normal, float3 lightDir, float3 viewDir, float3 lightColor, float shininess)
+{
+    vec3 reflectDir = reflect(-lightDir, normal);
+    
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);
+    
+    return lightColor * spec;
+}
+```
 
 ---
 
@@ -159,14 +205,19 @@ Phong 模型在计算反射向量 $R$ 时开销较大，且当 $R$ 和 $V$ 夹�
 
 半程向量 $H$ 是光照方向 $L$ 和视线方向 $V$ 的中间单位向量。
 
-$$H = \frac{L + V}{||L + V||}$$
+$$
+H = \frac{L + V}{||L + V||}
+$$
 
 Blinn-Phong 比较的是法线 $N$ 与半程向量 $H$ 的重合程度。
 
-$$I_{specular} = K_s \cdot I_{light} \cdot \max(N \cdot H, 0)^{\alpha}$$
+$$
+I_{specular} = K_s \cdot I_{light} \cdot \max(N \cdot H, 0)^{\alpha}
+$$
 
-- **注意**：要达到与 Phong 相似的视觉效果，Blinn-Phong 的 Shininess 指数通常要是 Phong 的 2-4 倍。
-    
+:::note
+要达到与 Phong 相似的视觉效果，Blinn-Phong 的 Shininess 通常要是 Phong 的 2-4 倍。
+:::
 
 ### 着色器实现
 
@@ -176,6 +227,18 @@ OpenGL Shading Language
 vec3 CalculateBlinnPhong(vec3 normal, vec3 lightDir, vec3 viewDir, vec3 lightColor, float shininess)
 {
     vec3 halfwayDir = normalize(lightDir + viewDir);
+    
+    float spec = pow(max(dot(normal, halfwayDir), 0.0), shininess);
+    
+    return lightColor * spec;
+}
+```
+High Level Shading Language
+
+```hlsl
+float3 CalculateBlinnPhong(float3 normal, float3 lightDir, float3 viewDir, float3 lightColor, float shininess)
+{
+    float3 halfwayDir = normalize(lightDir + viewDir);
     
     float spec = pow(max(dot(normal, halfwayDir), 0.0), shininess);
     
@@ -198,7 +261,9 @@ vec3 CalculateBlinnPhong(vec3 normal, vec3 lightDir, vec3 viewDir, vec3 lightCol
 
 在实际应用中，最终颜色通常是上述分量的组合：
 
-$$FinalColor = Ambient + Diffuse (Lambert) + Specular (BlinnPhong)$$
+$$
+FinalColor = Ambient + Diffuse (Lambert) + Specular (BlinnPhong)
+$$
 ---
 ## 参考
 

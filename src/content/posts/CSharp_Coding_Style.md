@@ -3,7 +3,7 @@ title: C# 代码规范
 published: 2026-01-31
 pinned: false
 description: 本文定义了项目中 C# 代码的命名约定与格式化标准。本规范旨在统一团队代码风格，提高代码的可读性与维护性。
-image: ""
+image: "https://upload.wikimedia.org/wikipedia/commons/d/d2/C_Sharp_Logo_2023.svg"
 tags:
   - C#
   - Coding
@@ -13,8 +13,9 @@ author: Lewis
 draft: false
 ---
 
-> [!NOTE]
-> **本文的代码命名规范仅作为参考，如果你有自己的个人命名规范或团队命名规范，请坚持使用！**
+:::note
+**本文的代码命名规范仅作为参考，如果你有自己的个人命名规范或团队命名规范，请坚持使用！**
+:::
 
 ---
 ## 命名逻辑可视化图谱
@@ -80,7 +81,7 @@ graph LR
 ---
 ## 代码示例
 
-```csharp title = "PlayerController.cs"
+```csharp
 using UnityEngine;
 using System;
 
@@ -155,7 +156,7 @@ public class PlayerController : MonoBehaviour, IInteractable
 主流IDE如JetBrains Rider和Visual Studio都完全支持通过写入`.editorconfig`配置文件来统一管理代码风格，避免不同项目或不同设备之间重复编辑。
 
 在你的C#项目根目录中（与`.sln`文件同级的目录），新建`NamingStyle.editorconfig`文件，并写入以下内容。
-```ini title = "NamingStyle.editorconfig"
+```ini
 # editorconfig.org
 
 # top-most EditorConfig file
