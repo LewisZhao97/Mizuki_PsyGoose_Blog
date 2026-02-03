@@ -236,7 +236,7 @@ onDestroy(() => {
     <input id="search-input-desktop" placeholder={i18n(I18nKey.search)} bind:value={keywordDesktop}
         onfocus={() => {
             clearTimeout(blurTimer);
-            if (!isDesktopSearchExpanded) toggleDesktopSearch();
+            if (!isDesktopSearchExpanded) toggleDesktopSearch(); 
             search(keywordDesktop, true);
         }}
         onblur={handleBlur}
@@ -271,7 +271,7 @@ onDestroy(() => {
            class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block
        rounded-xl text-lg px-3 py-2 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]">
             <div class="transition text-90 inline-flex font-bold group-hover:text-[var(--primary)]">
-                {item.meta.title}<Icon icon="fa6-solid:chevron-right" class="transition text-[0.75rem] translate-x-1 my-auto text-[var(--primary)]"></Icon>
+                {item.meta.title}<Icon icon="fa7-solid:chevron-right" class="transition text-[0.75rem] translate-x-1 my-auto text-[var(--primary)]"></Icon>
             </div>
             <div class="transition text-sm text-50">
                 {@html item.excerpt}

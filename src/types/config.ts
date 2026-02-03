@@ -77,8 +77,16 @@ export type SiteConfig = {
 
 	// 顶栏标题配置
 	navbarTitle?: {
+		mode?: "text-icon" | "logo"; // 显示模式："text-icon" 显示图标+文本，"logo" 仅显示Logo
 		text: string; // 顶栏标题文本
 		icon?: string; // 顶栏标题图标路径
+		logo?: string; // 网站Logo图片路径
+	};
+
+	// 页面自动缩放配置
+	pageScaling?: {
+		enable: boolean; // 是否开启自动缩放
+		targetWidth?: number; // 目标宽度，低于此宽度时开始缩放
 	};
 
 	// 添加字体配置
@@ -103,9 +111,18 @@ export type SiteConfig = {
 		fetchOnDev?: boolean;
 	};
 
+	// 添加bilibili配置
+	bilibili?: {
+		vmid?: string; // Bilibili用户ID (vmid)
+		fetchOnDev?: boolean; // 是否在开发环境下获取 Bilibili 数据
+		SESSDATA?: string; // Bilibili SESSDATA（可选，用于获取进度信息）
+		coverMirror?: string; // 封面图片镜像源（可选，默认为空字符串）
+		useWebp?: boolean; // 是否使用WebP格式（默认 true）
+	};
+
 	// 添加番剧页面配置
 	anime?: {
-		mode?: "bangumi" | "local"; // 番剧页面模式
+		mode?: "bangumi" | "local" | "bilibili"; // 番剧页面模式
 	};
 
 	// 标签样式配置
@@ -186,7 +203,7 @@ export enum LinkPreset {
 	Friends = 3,
 	Anime = 4,
 	Diary = 5,
-	Gallery = 6,
+	Albums = 6,
 	Projects = 7,
 	Skills = 8,
 	Timeline = 9,
@@ -351,8 +368,12 @@ export type WidgetComponentConfig = {
 };
 
 export type SidebarLayoutConfig = {
-	position: "unilateral" | "both"; // 侧边栏位置：单侧或双侧
-	components: WidgetComponentConfig[]; // 组件配置列表
+	properties: WidgetComponentConfig[]; // 组件配置列表
+	components: {
+		left: WidgetComponentType[];
+		right: WidgetComponentType[];
+		drawer: WidgetComponentType[];
+	};
 	defaultAnimation: {
 		enable: boolean; // 是否启用默认动画
 		baseDelay: number; // 基础延迟时间（毫秒）

@@ -16,6 +16,8 @@ import type {
 } from "./types/config";
 import { LinkPreset } from "./types/config";
 
+// 移除i18n导入以避免循环依赖
+
 // 定义站点语言
 const SITE_LANG = "zh_CN"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 const SITE_TIMEZONE = 8; //设置你的网站时区 from -12 to 12 default in UTC+8
@@ -34,7 +36,7 @@ export const siteConfig: SiteConfig = {
 		fixed: false, // 对访问者隐藏主题色选择器
 	},
 
-	// 特色页面开关配置(关闭不在使用的页面有助于提升SEO,关闭后直接在顶部导航删除对应的页面就行)
+	// 特色页面开关配置（关闭未使用的页面有助于提升 SEO，关闭后请记得在 navbarConfig 中移除对应链接）
 	featurePages: {
 		anime: true, // 番剧页面开关
 		diary: false, // 日记页面开关
@@ -48,10 +50,28 @@ export const siteConfig: SiteConfig = {
 
 	// 顶栏标题配置
 	navbarTitle: {
+		// 显示模式："text-icon" 显示图标+文本，"logo" 仅显示Logo
+		mode: "text-icon",
 		// 顶栏标题文本
 		text: "PsyGoose",
 		// 顶栏标题图标路径，默认使用 public/assets/home/home.png
 		icon: "/assets/home/home.png",
+		// 网站Logo图片路径
+		logo: "/assets/home/home.png",
+	},
+
+	// 页面自动缩放配置
+	pageScaling: {
+		enable: true, // 是否开启自动缩放
+		targetWidth: 2000, // 目标宽度，低于此宽度时开始缩放
+	},
+
+	bilibili: {
+		vmid: "108877865", // 在此处设置你的Bilibili用户ID (vmid)，例如 "1129280784"
+		fetchOnDev: true, // 是否在开发环境下获取 Bilibili 数据（默认 false）
+		SESSDATA: "", // Bilibili SESSDATA（可选，用于获取观看进度，从浏览器cookie中获取）
+		coverMirror: "", // 封面图片镜像源（可选，如果需要使用镜像源，例如 "https://images.weserv.nl/?url="）
+		useWebp: true, // 是否使用WebP格式（默认 true）
 	},
 
 	bangumi: {
@@ -60,7 +80,7 @@ export const siteConfig: SiteConfig = {
 	},
 
 	anime: {
-		mode: "local", // 番剧页面模式："bangumi" 使用Bangumi API，"local" 使用本地配置
+		mode: "local", // 番剧页面模式："bangumi" 使用Bangumi API，"local" 使用本地配置，"bilibili" 使用Bilibili API
 	},
 
 	// 文章列表布局配置
@@ -379,7 +399,7 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "Announcement", // 公告标题
-	content: "This blog records my technical works in game engines.", // 公告内容
+	content: "本博客记录我作为TA技术美术在图形学领域中的见闻、工作经验、技术尝试以及思考。", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: true, // 启用链接
@@ -410,14 +430,11 @@ export const footerConfig: FooterConfig = {
 /**
  * 侧边栏布局配置
  * 用于控制侧边栏组件的显示、排序、动画和响应式行为
- * sidebar: 控制组件在左侧栏和右侧栏,注意移动端是不会显示右侧栏的内容(unilateral模式除外),在设置了right属性的时候请确保你使用双侧(both)布局
+ * sidebar: 控制组件所在的侧边栏（left 或 right）。注意：移动端通常不显示右侧栏内容。若组件设置在 right，请确保 layout.position 为 "both"。
  */
 export const sidebarLayoutConfig: SidebarLayoutConfig = {
-	// 侧边栏位置：单侧(unilateral)或双侧(both)
-	position: "both",
-
-	// 侧边栏组件配置列表
-	components: [
+	// 侧边栏组件属性配置列表
+	properties: [
 		{
 			// 组件类型：用户资料组件
 			type: "profile",
@@ -526,6 +543,13 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 		},
 	],
 
+	// 侧栏组件布局配置
+	components: {
+		left: ["profile", "announcement", "categories", "tags"],
+		right: ["site-stats", "calendar"],
+		drawer: ["profile", "announcement"],
+	},
+
 	// 默认动画配置
 	defaultAnimation: {
 		// 是否启用默认动画
@@ -544,7 +568,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			mobile: 768,
 			// 平板端断点：屏幕宽度小于1280px
 			tablet: 1280,
-			// 桌面端断点：屏幕宽度小于1280px
+			// 桌面端断点：屏幕宽度大于等于1280px
 			desktop: 1280,
 		},
 		// 不同设备的布局模式

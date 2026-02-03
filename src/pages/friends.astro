@@ -38,16 +38,16 @@ const allTags = Array.from(new Set(friendsList.flatMap((item) => item.tags)));
 	</script>
 	<div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32 mb-4">
 		<div class="card-base z-10 px-9 py-6 relative w-full">
-			<!-- 页面标题 -->
-			<div class="flex flex-col items-start justify-center mb-8">
-				<h1 class="text-4xl font-bold text-black/90 dark:text-white/90 mb-2 relative
+      <!-- 页面标题 -->
+      <div class="flex flex-col items-start justify-center mb-8">
+        <h1 class="text-4xl font-bold text-black/90 dark:text-white/90 mb-2 relative
                   before:w-1 before:h-8 before:rounded-md before:bg-[var(--primary)]
                   before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-4">
-					{i18n(I18nKey.friends)}
-				</h1>
-				<p class="text-lg text-black/60 dark:text-white/60">
-					{i18n(I18nKey.friendsSubtitle)}
-				</p>
+          {i18n(I18nKey.friends)}
+        </h1>
+        <p class="text-lg text-black/60 dark:text-white/60">
+          {i18n(I18nKey.friendsSubtitle)}
+        </p>
 			</div>
 
 			<!-- 搜索和筛选栏 -->
@@ -68,7 +68,7 @@ const allTags = Array.from(new Set(friendsList.flatMap((item) => item.tags)));
 						<svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-black/40 dark:text-white/40"
 							 fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-								  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+								d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
 						</svg>
 					</div>
 				</div>
@@ -157,7 +157,7 @@ const allTags = Array.from(new Set(friendsList.flatMap((item) => item.tags)));
 			<div id="no-results" class="hidden text-center py-12">
 				<svg class="w-16 h-16 mx-auto mb-4 text-black/20 dark:text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-						  d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+						d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 				</svg>
 				<p class="text-black/50 dark:text-white/50 text-lg">{i18n(I18nKey.friendsNoResults)}</p>
 			</div>
@@ -179,12 +179,14 @@ const allTags = Array.from(new Set(friendsList.flatMap((item) => item.tags)));
 	<div class="mt-4">
 		<Comment post={friendsPost as any} />
 	</div>
+
 	<!-- 引用全局脚本 -->
 	<script is:inline src="/js/friends-page-handler.js"></script>
 </MainGridLayout>
 
 <style>
 	/* 定义卡片基础背景色 */
+	/* 友链卡片动画 */
 	.friend-card {
 		--card-bg: rgba(255, 255, 255, 0);
 		/* 初始无阴影 */
@@ -214,6 +216,8 @@ const allTags = Array.from(new Set(friendsList.flatMap((item) => item.tags)));
 	.friend-card:nth-child(3) { animation-delay: 0.15s; }
 	.friend-card:nth-child(4) { animation-delay: 0.2s; }
 	/* ... 更多 */
+	.friend-card:nth-child(5) { animation-delay: 0.25s; }
+	.friend-card:nth-child(6) { animation-delay: 0.3s; }
 
 	@keyframes fadeInUp {
 		from { opacity: 0; transform: translateY(20px); }
@@ -224,6 +228,7 @@ const allTags = Array.from(new Set(friendsList.flatMap((item) => item.tags)));
 		box-shadow: 0 0 0 3px var(--primary) / 0.1;
 	}
 
+	/* 标签筛选按钮样式 - 与番剧页面一致 */
 	.filter-container {
 		display: flex;
 		flex-wrap: wrap;
@@ -253,5 +258,12 @@ const allTags = Array.from(new Set(friendsList.flatMap((item) => item.tags)));
 		background: var(--primary);
 		color: white;
 		border-color: var(--primary);
+	}
+
+	.filter-tag.active:hover {
+		background: var(--primary) !important;
+		color: white !important;
+		border-color: var(--primary) !important;
+		transform: translateY(-1px);
 	}
 </style>
