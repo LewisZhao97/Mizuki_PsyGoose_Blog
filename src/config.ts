@@ -399,7 +399,7 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "Announcement", // 公告标题
-	content: "本博客记录我作为TA技术美术在图形学领域中的见闻、工作经验、技术尝试以及思考。", // 公告内容
+	content: "本博客记录我作为TA技术美术在图形学领域中的见闻、工作经验、技术分享以及尝试与思考。", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: true, // 启用链接
